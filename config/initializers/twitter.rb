@@ -1,4 +1,4 @@
-require 'Twitter'
+require 'twitter'
 
 $twitter = Twitter::REST::Client.new do |config|
   config.consumer_key       = 'BBgeLJEeb1hbHJv1prbujRotH'
