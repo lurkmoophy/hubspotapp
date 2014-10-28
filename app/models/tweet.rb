@@ -12,7 +12,8 @@ class Tweet < ActiveRecord::Base
 	
 
 	def self.get_latest
-	    $twitter.search("hubs.ly", :result_type => "recent").each do |row|
+		last_tweet = Tweet.last
+	    $twitter.search("hubs.ly", :result_type => "recent", :since_id => last_tweet.id).each do |row|
 	        coordlocation = row.place::country
 	        description = row.user::description.gsub(",","")
 	        biolocation = row.user::location.gsub(",","")
@@ -30,7 +31,7 @@ class Tweet < ActiveRecord::Base
 			            country: "#{coordlocation}"
 			            )
 			        t.save
-		    end	    	
+		    end		    	    	
 		end		
 	end
 
