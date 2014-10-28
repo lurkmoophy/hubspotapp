@@ -4,8 +4,53 @@ class TweetsController < ApplicationController
 
   # GET /tweets
   # GET /tweets.json
+  def raw
+    @per_page = params[:per_page] || Tweet.per_page || 20
+    if @per_page == "ALL"
+      @tweets = Tweet.paginate( :per_page => Tweet.count, :page => params[:page])
+    elsif %w(10 20 30 40 50 75 100).any?
+      @tweets = Tweet.paginate( :per_page => @per_page, :page => params[:page])
+    else
+      @tweets = Tweet.paginate( :per_page => 20, :page => params[:page])
+    end
+  end
+
+  def eu
+    @raw = Tweet.all
+    @tweets = Array.new
+    @raw.each do |tweet|
+      if Tweet.eu_places.include?(tweet.userlocation)
+        @tweets << tweet
+      end
+    end
+
+    @per_page = params[:per_page] || Tweet.per_page || 20
+    if @per_page == "ALL"
+      @eutweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
+    elsif %w(10 20 30 40 50 75 100).any?
+      @eutweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
+    else
+      @eutweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+    end
+  end
+
   def index
-    @tweets = Tweet.all
+     @raw = Tweet.all
+    @tweets = Array.new
+    @raw.each do |tweet|
+      if Tweet.uk_places.include?(tweet.userlocation)
+        @tweets << tweet
+      end
+    end
+
+    @per_page = params[:per_page] || Tweet.per_page || 20
+    if @per_page == "ALL"
+      @uktweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
+    elsif %w(10 20 30 40 50 75 100).any?
+      @uktweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
+    else
+      @uktweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+    end
   end
 
   # GET /tweets/1

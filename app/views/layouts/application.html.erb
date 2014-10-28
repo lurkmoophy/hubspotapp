@@ -2,13 +2,35 @@
 <html>
 <head>
   <title>Hub Spot App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  	<script src="//use.typekit.net/ifw3yzl.js"></script>
+	<script>try{Typekit.load();}catch(e){}</script>
 </head>
-<body>
+	<body>
+		<header>
+			<h1>OG HubSpot App</h1>
+			<nav>
+				<ul>
+					<li>
+						<a href="/" class="button">UK</a>
+					</li>
+					<li>
+						<a href="/eu" class="button">EU</a>
+					</li>
+					<li>
+						<a href="/raw" class="button">ALL</a>
+					</li>
+				</ul>
+			</nav>
+		</header>
+		<main>
 
-<%= yield %>
+		<%= yield %>
 
-</body>
+		</main>
+
+	</body>
 </html>

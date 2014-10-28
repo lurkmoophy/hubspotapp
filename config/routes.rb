@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  get 'tweets/raw'
+
+  get 'tweets/eu'
+
+  get 'tweet/eu'
+
+  get 'tweet/raw'
+
   resources :tweets
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -8,7 +16,8 @@ Rails.application.routes.draw do
    root to: 'tweets#index'
 
   # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+    get 'eu' => 'tweets#eu'
+    get 'raw' => 'tweets#raw'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
