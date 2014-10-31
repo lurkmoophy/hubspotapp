@@ -27,7 +27,9 @@ gem 'twitter'
 
 gem 'will_paginate', '~> 3.0'
 
-gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemon-spawn', '0.4.2'
+
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
