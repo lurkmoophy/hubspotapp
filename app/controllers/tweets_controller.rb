@@ -17,8 +17,7 @@ class TweetsController < ApplicationController
 
   def eu
 
-    @tweets = Tweet.select{ |i| Tweet.eu_places.include?(i.userlocation) }
-
+    @tweets = Tweet.where(eu: 'Y')
 
     @per_page = params[:per_page] || Tweet.per_page || 20
       if @per_page == "ALL"
@@ -31,9 +30,24 @@ class TweetsController < ApplicationController
     
   end
 
+  def us
+
+    @tweets = Tweet.where(us: 'Y')
+
+    @per_page = params[:per_page] || Tweet.per_page || 20
+      if @per_page == "ALL"
+        @ustweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
+      elsif %w(10 20 30 40 50 75 100).any?
+        @ustweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
+      else
+        @ustweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+      end
+    
+  end
+
   def index
 
-    @tweets = Tweet.select{ |i| Tweet.uk_places.include?(i.userlocation) }
+    @tweets = Tweet.where(uk: 'Y')
 
 
     @per_page = params[:per_page] || Tweet.per_page || 20

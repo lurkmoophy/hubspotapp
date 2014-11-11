@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>US users who use hubs.ly</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Original Tweet</th>
+      <th>Twitter handle</th>
+      <th>Full name</th>
+      <th>Bio</th>
+      <th>Location</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ustweets.each do |tweet| %>
+        <tr>
+          <td><a href="<%= tweet.tweeturl %>" target="_blank">Original Tweet</a></td>
+          <td><a href="http://twitter.com/<%= tweet.handle %>" target="_blank"><%= tweet.handle %></a></td>
+          <td><%= tweet.name %></td>
+          <td><%= tweet.bio %></td>
+          <td><%= tweet.userlocation %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<div id="pagination">
+<div id="pages">
+  How many users per page: <%= select_tag :iper_page, options_for_select([10,20,50, 100, "ALL"], params[:per_page].to_i),
+         :onchange => "if(this.value){window.location='?per_page='+this.value;}" %></div>
+  <%= will_paginate @ustweets %>
+</div>

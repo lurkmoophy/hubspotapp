@@ -1,0 +1,42 @@
+FATAL:  terminating connection due to administrator command
+/Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/postgresql/database_statements.rb:147:in `async_exec': PG::UnableToSend: server closed the connection unexpectedly (ActiveRecord::StatementInvalid)
+	This probably means the server terminated abnormally
+	before or while processing the request.
+:             SELECT tablename
+            FROM pg_tables
+            WHERE schemaname = ANY (current_schemas(false))
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/postgresql/database_statements.rb:147:in `block in query'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/abstract_adapter.rb:464:in `block in log'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activesupport-4.2.0.beta2/lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/abstract_adapter.rb:458:in `log'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/postgresql/database_statements.rb:146:in `query'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/postgresql/schema_statements.rb:97:in `tables'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/schema_cache.rb:90:in `prepare_tables'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/connection_adapters/schema_cache.rb:22:in `table_exists?'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/model_schema.rb:230:in `table_exists?'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/attribute_methods/primary_key.rb:97:in `get_primary_key'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/attribute_methods/primary_key.rb:85:in `reset_primary_key'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/attribute_methods/primary_key.rb:73:in `primary_key'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/relation/delegation.rb:48:in `primary_key'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/activerecord-4.2.0.beta2/lib/active_record/relation.rb:331:in `update_all'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job_active_record-4.0.2/lib/delayed/backend/active_record.rb:40:in `clear_locks!'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/plugins/clear_locks.rb:9:in `block (2 levels) in <class:ClearLocks>'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:79:in `call'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:79:in `block (2 levels) in add'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:61:in `call'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:61:in `block in initialize'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:79:in `call'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:79:in `block in add'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:66:in `call'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:66:in `execute'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/lifecycle.rb:40:in `run_callbacks'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/delayed_job-4.0.4/lib/delayed/worker.rb:142:in `start'
+	from lib/background_job:13:in `start'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:51:in `block in start'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:38:in `fork'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:38:in `start'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:181:in `block in start'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:181:in `map'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:181:in `start'
+	from /Users/lurkmoophy/.rbenv/versions/2.1.3/lib/ruby/gems/2.1.0/gems/daemon-spawn-0.4.2/lib/daemon_spawn.rb:165:in `spawn!'
+	from lib/background_job:21:in `<main>'
