@@ -1,9 +1,6 @@
 class Tweet < ActiveRecord::Base
 	validates :handle, uniqueness: true
 
-	geocoded_by :country
-	after_validation :geocode
-
 	def self.eu_places
 		["Andorra", "Albania", "Austria", "Bosnia-Hercegovina", "Belgium", "Bulgaria", "Belarus", "Switzerland", "Cyprus", "Czech Republic", "Germany", "Denmark", "Estonia", "Spain", "Finland", "Faroe Islands", "France", "Guernsey", "Gibraltar", "Greece", "Croatia", "Hungary", "Ireland", "Isle of Man", "Iceland", "Italy", "Jersey", "Liechtenstein", "Lithuania", "Luxemburg", "Latvia", "Monaco", "Moldova", "Macedonia", "Malta", "Netherlands", "Norway", "Poland", "Portugal", "Romania", "Russia", "Sweden", "Slovenia", "Svalbard", "Slovakia", "San Marino", "West Turkey", "Ukraine", "Vatican City", "Yugoslavia"]
 	end
