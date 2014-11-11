@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   require 'will_paginate/array'
+  require 'csv'
   def globals
 	  @raw = Tweet.all
 	  @tweets = Array.new
