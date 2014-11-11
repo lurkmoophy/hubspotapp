@@ -18,7 +18,7 @@ class Tweet < ActiveRecord::Base
 	    $twitter.search("hubs.ly", :result_type => "recent").each do |row|
 	        coordlocation = row.place::country
 	        description = row.user::description.gsub(",","")
-	        biolocation = row.user::location	       
+	        biolocation = row.user::location(",","")	       
 	      	if coordlocation.nil?
 	        	coordlocation = "coordinates not provided"
 	      	end
