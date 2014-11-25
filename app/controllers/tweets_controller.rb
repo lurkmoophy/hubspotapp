@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
 
   def eu
 
-    @tweets = Tweet.where(eu: 'Y')
+    @tweets = Tweet.where(eu: 'Y').reorder('id DESC')
 
     @per_page = params[:per_page] || Tweet.per_page || 20
       if @per_page == "ALL"
@@ -33,7 +33,7 @@ class TweetsController < ApplicationController
 
   def us
 
-    @tweets = Tweet.where(us: 'Y')
+    @tweets = Tweet.where(us: 'Y').reorder('id DESC')
 
     @per_page = params[:per_page] || Tweet.per_page || 20
       if @per_page == "ALL"
@@ -48,7 +48,7 @@ class TweetsController < ApplicationController
 
   def index
 
-    @tweets = Tweet.where(uk: 'Y')
+    @tweets = Tweet.where(uk: 'Y').reorder('id DESC')
 
     respond_to do |format|
       format.html do

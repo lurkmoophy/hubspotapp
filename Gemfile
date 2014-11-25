@@ -30,6 +30,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'daemon-spawn', '0.4.2'
 gem 'geocoder'
 gem 'taps'
+gem 'unread'
 
 
 # Use ActiveModel has_secure_password

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   require 'will_paginate/array'
   require 'csv'
   def globals
-	  @raw = Tweet.all
+	  @raw = Tweet.all.reorder('id DESC')
 	  @tweets = Array.new
 	end
 
