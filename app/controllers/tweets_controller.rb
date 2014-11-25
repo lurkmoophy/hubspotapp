@@ -55,13 +55,10 @@ class TweetsController < ApplicationController
         @per_page = params[:per_page] || Tweet.per_page || 20
         if @per_page == "ALL"
           @uktweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])     
-        end
-        elsif %w(10 20 30 40 50 75 100).any?
-          @uktweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])     
-        end
+         elsif %w(10 20 30 40 50 75 100).any?
+          @uktweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
         else
           @uktweets = @tweets.paginate( :per_page => 20, :page => params[:page])
-
         end
       end
       format.csv do
