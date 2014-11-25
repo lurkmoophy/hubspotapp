@@ -15,7 +15,7 @@
 
   <tbody>
     <% @uktweets.each do |tweet| %>
-        <% if tweet.downloaded = Y %>
+        <% if tweet.downloaded = 'Y' %>
           <tr class="downloaded">
         <% else %>
           <tr>
