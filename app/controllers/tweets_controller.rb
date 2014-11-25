@@ -5,45 +5,47 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def raw
-     @csvtweets = Tweet.where(downloaded: nil)
+    @csvtweets = Tweet.where(downloaded: nil)
 
-     respond_to do |format|
-      format.html do
-    @per_page = params[:per_page] || Tweet.per_page || 20
-    if @per_page == "ALL"
-      @tweets = Tweet.paginate( :per_page => Tweet.count, :page => params[:page])
-    elsif %w(10 20 30 40 50 75 100).any?
-      @tweets = Tweet.paginate( :per_page => @per_page, :page => params[:page])
-    else
-      @tweets = Tweet.paginate( :per_page => 20, :page => params[:page])
-    end
-     end
-      format.csv do
-        headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
-        headers['Content-Type'] ||= 'text/csv'
+      respond_to do |format|
+        format.html do
+          @per_page = params[:per_page] || Tweet.per_page || 20
+          if @per_page == "ALL"
+            @tweets = Tweet.paginate( :per_page => Tweet.count, :page => params[:page])
+          elsif %w(10 20 30 40 50 75 100).any?
+            @tweets = Tweet.paginate( :per_page => @per_page, :page => params[:page])
+          else
+            @tweets = Tweet.paginate( :per_page => 20, :page => params[:page])
+          end
+        end
+        format.csv do
+          headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
+          headers['Content-Type'] ||= 'text/csv'
+        end
       end
   end
 
   def eu
 
     @tweets = Tweet.where(eu: 'Y').reorder('id DESC')
-     @csvtweets = Tweet.where(downloaded: nil, eu: 'Y')
+    @csvtweets = Tweet.where(downloaded: nil, eu: 'Y')
 
-     respond_to do |format|
+    respond_to do |format|
       format.html do
-    @per_page = params[:per_page] || Tweet.per_page || 20
-      if @per_page == "ALL"
-        @eutweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
-      elsif %w(10 20 30 40 50 75 100).any?
-        @eutweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
-      else
-        @eutweets = @tweets.paginate( :per_page => 20, :page => params[:page])
-      end
+        @per_page = params[:per_page] || Tweet.per_page || 20
+        if @per_page == "ALL"
+          @eutweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
+        elsif %w(10 20 30 40 50 75 100).any?
+          @eutweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
+        else
+          @eutweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+        end
       end
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
         headers['Content-Type'] ||= 'text/csv'
       end
+    end
     
   end
 
@@ -54,20 +56,20 @@ class TweetsController < ApplicationController
 
     respond_to do |format|
       format.html do
-    @per_page = params[:per_page] || Tweet.per_page || 20
-      if @per_page == "ALL"
-        @ustweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
-      elsif %w(10 20 30 40 50 75 100).any?
-        @ustweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
-      else
-        @ustweets = @tweets.paginate( :per_page => 20, :page => params[:page])
-      end
-      end
+        @per_page = params[:per_page] || Tweet.per_page || 20
+          if @per_page == "ALL"
+            @ustweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
+          elsif %w(10 20 30 40 50 75 100).any?
+            @ustweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
+          else
+            @ustweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+          end
+        end
       format.csv do
         headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
         headers['Content-Type'] ||= 'text/csv'
       end
-    
+    end
   end
 
   def index
@@ -91,12 +93,6 @@ class TweetsController < ApplicationController
         headers['Content-Type'] ||= 'text/csv'
       end
     end
-
-
-
-    
-
-
   end
 
   # GET /tweets/1
