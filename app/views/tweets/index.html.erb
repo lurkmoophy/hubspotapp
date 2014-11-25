@@ -15,7 +15,11 @@
 
   <tbody>
     <% @uktweets.each do |tweet| %>
-        <tr>
+        <% if tweet.downloaded = Y %>
+          <tr class="downloaded">
+        <% else %>
+          <tr>
+        <% end %>
           <td><a href="<%= tweet.tweeturl %>" target="_blank">Original Tweet</a></td>
           <td><a href="http://twitter.com/<%= tweet.handle %>" target="_blank"><%= tweet.handle %></a></td>
           <td><%= tweet.name %></td>

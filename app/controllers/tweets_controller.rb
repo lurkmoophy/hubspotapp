@@ -49,6 +49,7 @@ class TweetsController < ApplicationController
   def index
 
     @tweets = Tweet.where(uk: 'Y').reorder('id DESC')
+    @csvtweets = Tweet.where(downloaded: nil, uk: 'Y')
 
     respond_to do |format|
       format.html do
