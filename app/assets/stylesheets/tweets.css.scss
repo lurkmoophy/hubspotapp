@@ -58,3 +58,16 @@ table {
 		color: #333;
 	}
 }
+
+.btn {
+	text-align: center;
+	 background: #e74b3b;
+	 color: #fff;
+	 padding: 5px 10px;
+	 text-decoration: none;
+	 margin: 0 auto;
+
+	 &:hover {
+	 	background: #c0392b
+	 }
+}

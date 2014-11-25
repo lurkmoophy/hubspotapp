@@ -5,7 +5,10 @@ class TweetsController < ApplicationController
   # GET /tweets
   # GET /tweets.json
   def raw
-    
+     @csvtweets = Tweet.where(downloaded: nil)
+
+     respond_to do |format|
+      format.html do
     @per_page = params[:per_page] || Tweet.per_page || 20
     if @per_page == "ALL"
       @tweets = Tweet.paginate( :per_page => Tweet.count, :page => params[:page])
@@ -14,12 +17,20 @@ class TweetsController < ApplicationController
     else
       @tweets = Tweet.paginate( :per_page => 20, :page => params[:page])
     end
+     end
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
   end
 
   def eu
 
     @tweets = Tweet.where(eu: 'Y').reorder('id DESC')
+     @csvtweets = Tweet.where(downloaded: nil, eu: 'Y')
 
+     respond_to do |format|
+      format.html do
     @per_page = params[:per_page] || Tweet.per_page || 20
       if @per_page == "ALL"
         @eutweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
@@ -28,13 +39,21 @@ class TweetsController < ApplicationController
       else
         @eutweets = @tweets.paginate( :per_page => 20, :page => params[:page])
       end
+      end
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
+        headers['Content-Type'] ||= 'text/csv'
+      end
     
   end
 
   def us
 
     @tweets = Tweet.where(us: 'Y').reorder('id DESC')
+     @csvtweets = Tweet.where(downloaded: nil, us: 'Y')
 
+    respond_to do |format|
+      format.html do
     @per_page = params[:per_page] || Tweet.per_page || 20
       if @per_page == "ALL"
         @ustweets = @tweets.paginate( :per_page => @tweets.count, :page => params[:page])
@@ -42,6 +61,11 @@ class TweetsController < ApplicationController
         @ustweets = @tweets.paginate( :per_page => @per_page, :page => params[:page])
       else
         @ustweets = @tweets.paginate( :per_page => 20, :page => params[:page])
+      end
+      end
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"tweet-list\""
+        headers['Content-Type'] ||= 'text/csv'
       end
     
   end

@@ -33,3 +33,4 @@
          :onchange => "if(this.value){window.location='?per_page='+this.value;}" %></div>
   <%= will_paginate @ustweets %>
 </div>
+<%= link_to 'Download CSV list', tweets_path(format: :csv), class: "btn" %>

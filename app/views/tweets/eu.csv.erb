@@ -1,0 +1,6 @@
+<%- headers = ['Original Tweet', 'Twitter name', 'Full name', 'Bio', 'Location'] -%>
+<%= CSV.generate_line headers %>
+<%- @csvtweets.each do |tweet| -%>
+  <%= CSV.generate_line([tweet.tweeturl, tweet.handle, tweet.name, tweet.bio, tweet.userlocation]) %>
+  <% tweet.update_attribute(:downloaded, 'Y') %>
+<%- end -%>
