@@ -11,30 +11,35 @@
 </head>
 	<body>
 		<header>
-			<!-- change -->
 			<h1>OG HubSpot App</h1>
-			<nav>
-				<ul>
-					<li>
-						<a href="/" class="button">UK</a>
-					</li>
-					<li>
-						<a href="/eu" class="button">EU</a>
-					</li>
-					<li>
-						<a href="/us" class="button">US</a>
-					</li>
-					<li>
-						<a href="/raw" class="button">ALL</a>
-					</li>
-				</ul>
-			</nav>
+			<div class="menu">
+				<nav>
+					<ul>
+						<li>
+							<a href="/">UK Tweets</a>
+						</li>
+						<li>
+							<a href="/eu">EU Tweets</a>
+						</li>
+						<li>
+							<a href="/us">US Tweets</a>
+						</li>
+						<li>
+							<a href="/raw">All Tweets</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
 		</header>
 		<main>
 
 		<%= yield %>
 
 		</main>
-
+		<script>
+			$('.menu').click( function() {
+				$('nav').toggleClass('show');
+			});
+		</script>
 	</body>
 </html>

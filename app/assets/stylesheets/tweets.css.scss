@@ -59,15 +59,17 @@ table {
 	}
 }
 
-.btn {
+.btn, .btn:visited {
+	display: block;
 	text-align: center;
+	width: 150px;
 	 background: #e74b3b;
 	 color: #fff;
 	 padding: 5px 10px;
 	 text-decoration: none;
-	 margin: 0 auto;
+	 margin: 10px auto;
 
 	 &:hover {
-	 	background: #c0392b
+	 	background: #c0392b;
 	 }
 }
